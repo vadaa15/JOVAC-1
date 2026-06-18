@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="myForm">
+
+        <input type="text" id="name" placeholder="Enter Name">
+        <p id="nameError" class="error"></p>
+
+        <input type="text" id="subject" placeholder="Enter Subject">
+        <p id="subjectError" class="error"></p>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <script>
+        const form = document.getElementById("myForm");
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let subject = document.getElementById("subject").value;
+
+            document.getElementById("nameError").innerText = "";
+            document.getElementById("subjectError").innerText = "";
+
+            if (name.trim() === "") {
+                document.getElementById("nameError").innerText =
+                    "Name is required";
+            }
+
+            if (subject.trim() === "") {
+                document.getElementById("subjectError").innerText =
+                    "Subject cannot be left empty";
+            }
+
+        });
+    </script>
+
+</body>
+</html>
